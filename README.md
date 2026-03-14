@@ -1,6 +1,6 @@
 # Performance Test Result Analyzer
 
-![CI Status](https://img.shields.io/badge/CI-pending-lightgrey)
+![CI Status](https://github.com/srijan384/devopsproject-performancetestresultanalyzer-srijan/actions/workflows/ci-cd.yml/badge.svg)
 ![Test Coverage](https://img.shields.io/badge/coverage-pending-lightgrey)
 ![License](https://img.shields.io/github/license/srijan384/devopsproject-performancetestresultanalyzer-srijan)
 
