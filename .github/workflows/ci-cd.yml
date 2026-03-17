@@ -37,5 +37,9 @@ jobs:
         run: |
           pytest || echo "No tests found"
 
+      - name: Build Docker Image
+        run: |
+          docker build -t performance-analyzer .
+
       - name: Build Successful
         run: echo "Project build completed successfully"
