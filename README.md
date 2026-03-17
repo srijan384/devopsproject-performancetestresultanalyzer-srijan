@@ -74,6 +74,11 @@ This project also demonstrates **end-to-end DevOps practices**, including CI/CD,
 
 ---
 
+## 📊 Monitoring
+
+Metrics available at:
+http://localhost:5001/metrics
+
 ## 🚀 Getting Started
 
 ### 🔹 Prerequisites

@@ -4,9 +4,17 @@ import matplotlib
 matplotlib.use('Agg')   # Fix for MacOS thread issue
 import matplotlib.pyplot as plt
 from pandas.errors import EmptyDataError
+from prometheus_flask_exporter import PrometheusMetrics
+from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
 import os
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app, path="/metrics")
+metrics.info('app_info', 'Application info', version='1.0')
+
+@app.route('/metrics')
+def metrics():
+    return generate_latest(), 200, {'Content-Type': CONTENT_TYPE_LATEST}
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)

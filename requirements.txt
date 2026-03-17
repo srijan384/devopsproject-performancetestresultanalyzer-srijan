@@ -5,3 +5,4 @@ seaborn
 pytest
 pytest-cov
 flake8
+prometheus-flask-exporter
