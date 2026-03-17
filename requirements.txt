@@ -2,3 +2,6 @@ flask
 pandas
 matplotlib
 seaborn
+pytest
+pytest-cov
+flake8
