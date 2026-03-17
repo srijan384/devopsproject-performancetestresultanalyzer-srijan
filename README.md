@@ -1,132 +1,93 @@
-# Performance Test Result Analyzer
+# 🚀 Performance Test Result Analyzer
 
 ![CI Status](https://github.com/srijan384/devopsproject-performancetestresultanalyzer-srijan/actions/workflows/ci-cd.yml/badge.svg)
-![Test Coverage](https://img.shields.io/badge/coverage-pending-lightgrey)
 ![License](https://img.shields.io/github/license/srijan384/devopsproject-performancetestresultanalyzer-srijan)
 
-Student Name: Srijan Singh  
-Registration No: 23FE10CSE00522  
-Course: CSE3253 DevOps [PE6]  
-Semester: VI (2025–2026)  
-Project Type: Testing & DevOps Pipeline  
-Difficulty: Intermediate
+---
+
+## 👨‍🎓 Project Details
+
+**Student Name:** Srijan Singh  
+**Registration No:** 23FE10CSE00522  
+**Course:** CSE3253 DevOps [PE6]  
+**Semester:** VI (2025–2026)  
+**Project Type:** DevOps & Testing Pipeline  
+**Difficulty Level:** Intermediate  
 
 ---
 
-## Project Overview
+## 📌 Project Overview
 
-Performance testing tools such as Apache JMeter and LoadRunner generate large result files containing response times and request data. Analyzing these results manually can be time-consuming and inefficient, especially when working with large datasets.
+Performance testing tools like Apache JMeter generate large datasets containing response times and request details. Manually analyzing such data is inefficient and time-consuming.
 
-The Performance Test Result Analyzer is a lightweight web application that simplifies this process by allowing users to upload performance test result files and automatically generate useful insights. The system processes CSV performance test results and calculates key metrics such as average response time and maximum response time while also visualizing the results through graphical representation.
+The **Performance Test Result Analyzer** is a lightweight Flask-based web application designed to:
 
-This project also demonstrates DevOps practices by incorporating version control, configuration management, containerization, CI/CD pipeline integration, and monitoring infrastructure.
+- Upload performance test result files (CSV)
+- Automatically analyze data
+- Generate meaningful insights
+- Visualize performance metrics using graphs
 
----
-
-## Objectives
-
-• Automate analysis of performance test result files  
-• Calculate important performance metrics from test data  
-• Visualize response time trends using graphs  
-• Implement DevOps practices including CI/CD and containerization  
-• Create a maintainable and scalable application structure  
+This project also demonstrates **end-to-end DevOps practices**, including CI/CD, testing, containerization, and code quality checks.
 
 ---
 
-## Key Features
+## 🎯 Objectives
 
-• Upload performance testing result files in CSV format  
-• Automatically calculate performance metrics  
-• Generate response time visualization graphs  
-• Simple and user-friendly web interface  
-• DevOps-ready architecture for future CI/CD integration  
-
----
-
-## Technology Stack
-
-Core Technologies  
-Programming Language: Python  
-Framework: Flask  
-Data Processing: Pandas  
-Visualization: Matplotlib  
-Database: None (CSV based analysis)
-
-DevOps Tools  
-Version Control: Git  
-Repository Hosting: GitHub  
-CI/CD: GitHub Actions (planned)  
-Containerization: Docker (planned)  
-Orchestration: Kubernetes (planned)  
-Monitoring: Nagios / Prometheus (planned)  
-Testing: Pytest (planned)
+- Automate analysis of performance testing results  
+- Compute key performance metrics  
+- Visualize response time trends  
+- Implement DevOps practices (CI/CD, Docker, linting)  
+- Build a scalable and maintainable system  
 
 ---
 
-## Getting Started
+## ⚙️ Key Features
 
-Prerequisites
-
-• Python 3.8 or higher  
-• Git 2.30 or higher  
-• Docker Desktop (for container deployment in later stages)
+- 📁 Upload CSV-based performance data  
+- 📊 Calculate metrics like:
+  - Average response time  
+  - Maximum response time  
+- 📈 Generate visual graphs  
+- 🌐 Simple and interactive web interface  
+- 🔁 Integrated CI/CD pipeline  
+- 🐳 Docker-based containerized deployment  
+- 🧪 Automated testing using PyTest  
+- 🧹 Code quality checks using Flake8  
 
 ---
 
-## Installation
+## 🧰 Technology Stack
 
-Clone the repository
+### Core Technologies
+- **Language:** Python  
+- **Framework:** Flask  
+- **Data Processing:** Pandas  
+- **Visualization:** Matplotlib  
 
-git clone https://github.com/srijan384/devopsproject-performancetestresultanalyzer-srijan.git  
+### DevOps Tools
+- **Version Control:** Git  
+- **Repository:** GitHub  
+- **CI/CD:** GitHub Actions  
+- **Testing:** PyTest  
+- **Code Quality:** Flake8  
+- **Containerization:** Docker  
+
+---
+
+## 🚀 Getting Started
+
+### 🔹 Prerequisites
+
+- Python 3.8+  
+- Git  
+- Docker Desktop (for containerized setup)
+
+---
+
+## 💻 Local Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/srijan384/devopsproject-performancetestresultanalyzer-srijan.git
 cd devopsproject-performancetestresultanalyzer-srijan
-
-Install dependencies
-
-pip install -r requirements.txt
-
-Run the application
-
-python src/app.py
-
-Access the application in a browser
-
-http://127.0.0.1:5000
-
-Upload a CSV file containing performance testing data.
-
-Example CSV format:
-
-request_id,response_time  
-1,120  
-2,150  
-3,200  
-4,180  
-5,170  
-
----
-
-## Alternative Installation (Future Docker Setup)
-
-Once Docker support is implemented, the application can be started using:
-
-docker-compose up --build
-
-The application will then be accessible at:
-
-http://localhost:8080
-
----
-
-## Project Structure
-
-devopsproject-performancetestresultanalyzer-srijan
-
-README.md – Project documentation  
-.gitignore – Git ignore rules  
-
-src/  
- app.py – Flask application entry point  
- config/ – Application configuration files  
- config.yaml – Environment configuration  
-
-templates
