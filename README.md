@@ -2,7 +2,11 @@
 
 ![CI Status](https://github.com/srijan384/devopsproject-performancetestresultanalyzer-srijan/actions/workflows/ci-cd.yml/badge.svg)
 ![License](https://img.shields.io/github/license/srijan384/devopsproject-performancetestresultanalyzer-srijan)
-
+![Python](https://img.shields.io/badge/python-3.10-blue)
+![Flask](https://img.shields.io/badge/flask-framework-black)
+![Docker](https://img.shields.io/badge/docker-enabled-blue)
+![Monitoring](https://img.shields.io/badge/monitoring-prometheus-orange)
+![Tests](https://img.shields.io/badge/tests-pytest-green)
 ---
 
 ## 👨‍🎓 Project Details
