@@ -1,22 +1,35 @@
 from flask import Flask, render_template, request
-import pandas as pd
-import matplotlib
-matplotlib.use('Agg')   # Fix for MacOS thread issue
-import matplotlib.pyplot as plt
-from pandas.errors import EmptyDataError
 from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
 import os
 
-app = Flask(__name__)
+# Import analyzer logic
+from analyzer import analyze_file
+
+# Paths
+base_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(base_dir, '..'))
+
+# Flask app setup
+app = Flask(
+    __name__,
+    template_folder=os.path.join(base_dir, 'templates'),
+    static_folder=os.path.join(project_root, 'static'),
+    static_url_path='/static'
+)
+
+print("STATIC PATH:", app.static_folder)
+
+# Prometheus Monitoring
 metrics = PrometheusMetrics(app, path="/metrics")
 metrics.info('app_info', 'Application info', version='1.0')
 
 @app.route('/metrics')
-def metrics():
+def metrics_endpoint():
     return generate_latest(), 200, {'Content-Type': CONTENT_TYPE_LATEST}
 
-UPLOAD_FOLDER = "uploads"
+# Upload folder setup
+UPLOAD_FOLDER = os.path.join(base_dir, "uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/')
@@ -27,48 +40,30 @@ def home():
 @app.route('/upload', methods=['POST'])
 def upload_file():
 
-    # Check if file was uploaded
     if 'file' not in request.files:
         return "No file uploaded"
 
     file = request.files['file']
 
-    # Check if filename is empty
     if file.filename == '':
         return "No file selected"
 
     filepath = os.path.join(UPLOAD_FOLDER, file.filename)
     file.save(filepath)
 
-    try:
-        df = pd.read_csv(filepath)
-    except EmptyDataError:
-        return "Error: Uploaded CSV file is empty"
+    # Call analyzer
+    result = analyze_file(filepath, os.path.join(project_root, "static"))
 
-    # Check if required column exists
-    if 'response_time' not in df.columns:
-        return "Error: CSV must contain a 'response_time' column"
-
-    avg_response = df['response_time'].mean()
-    max_response = df['response_time'].max()
-
-    plt.figure()
-    df['response_time'].plot(kind='line')
-    plt.title("Response Time Graph")
-    plt.xlabel("Request Number")
-    plt.ylabel("Response Time")
-
-    graph_path = "static/graph.png"
-    plt.savefig(graph_path)
-    plt.close()
+    if "error" in result:
+        return result["error"]
 
     return render_template(
         "result.html",
-        avg=avg_response,
-        max=max_response,
-        graph=graph_path
+        avg=result["avg"],
+        max=result["max"],
+        graph=result["graph"]
     )
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5002, debug=True)
